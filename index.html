@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ElectroTech – Elektronika Təmiri & Proyektlər</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind konfiqurasiyası -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00c8ff',
+                        dark: '#0a0f1e',
+                        card: '#111827',
+                        inner: '#151d35'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .modal-overlay {
+            display: none;
+        }
+
+        .service-card {
+            transition: transform .25s ease, border-color .25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #00c8ff;
+        }
+
+        .float-wa {
+            transition: transform .2s ease;
+        }
+
+        .float-wa:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-menu[open] .menu-arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+
+</head>
+
+<body class="bg-dark text-slate-100 overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-md border-b border-cyan-400/20">
+
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 h-[70px] flex items-center justify-between">
+
+            <!-- LOGO -->
+            <a href="#" class="text-2xl font-extrabold tracking-wide text-white whitespace-nowrap">
+                ⚡ Electro<span class="text-primary">Tech</span>
+            </a>
+
+            <!-- DESKTOP MENU -->
+            <div class="hidden lg:flex items-center gap-8">
+
+                <a href="#services" class="text-slate-400 hover:text-primary transition">
+                    Xidmətlər
+                </a>
+
+                <a href="#how" class="text-slate-400 hover:text-primary transition">
+                    Necə işləyir
+                </a>
+
+                <a href="#contact" class="text-slate-400 hover:text-primary transition">
+                    Əlaqə
+                </a>
+                <a href="#contact"
+                    class="bg-primary text-dark font-bold px-7 py-3 rounded-full hover:bg-white transition">
+                    Sifariş et
+                </a>
+
+            </div>
+
+            <!-- MOBILE MENU -->
+            <details class="nav-menu lg:hidden relative">
+
+                <summary class="list-none cursor-pointer w-11 h-11 border border-cyan-400/30 rounded-xl flex flex-col items-center justify-center gap-1.5">
+
+                    <span class="w-5 h-0.5 bg-primary rounded"></span>
+                    <span class="w-5 h-0.5 bg-primary rounded"></span>
+                    <span class="w-5 h-0.5 bg-primary rounded"></span>
+
+                </summary>
+
+                <div class="absolute top-[54px] right-0 w-[min(85vw,320px)] bg-slate-900 border border-cyan-400/20 rounded-xl shadow-2xl p-4 flex flex-col gap-1">
+
+                    <a href="#services" onclick="this.closest('details').open=false"
+                        class="p-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-primary">
+                        Xidmətlər
+                    </a>
+
+                    <a href="#how" onclick="this.closest('details').open=false"
+                        class="p-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-primary">
+                        Necə işləyir
+                    </a>
+
+                    <a href="#contact" onclick="this.closest('details').open=false"
+                        class="p-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-primary">
+                        Əlaqə
+                    </a>
+
+                    <a href="javascript:void(0)" onclick="this.closest('details').open=false; openTracker()"
+                        class="p-3 rounded-lg text-primary hover:bg-slate-800">
+                        🔍 Sifariş İzlə
+                    </a>
+
+                    <a href="#contact" onclick="this.closest('details').open=false"
+                        class="mt-2 text-center bg-primary text-dark font-bold p-3 rounded-full hover:bg-white transition">
+                        Sifariş et
+                    </a>
+
+                </div>
+
+            </details>
+
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="relative min-h-[620px] flex items-center justify-center text-center px-5 pt-32 pb-20 overflow-hidden">
+
+        <!-- Background glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,200,255,0.12),transparent_65%)] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto">
+
+            <div class="inline-block bg-primary/10 border border-primary/30 text-primary px-5 py-2 rounded-full text-sm font-bold mb-7">
+                ⚡ Professional Elektronika Xidmətləri
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white mb-7">
+
+                Elektronikanı
+                <span class="text-primary">Təmir et</span>,
+
+                <br>
+
+                Proyektlərini
+                <span class="text-primary">Həyata keçir</span>
+
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed mb-9">
+
+                Elektronika cihazlarınızın təmiri, sxem yığımı,
+                Arduino/ESP32 proyektləri, PCB dizaynı və daha çox
+                xidmət üçün peşəkar dəstək alın.
+
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+                <a href="#contact"
+                    class="w-full sm:w-auto bg-primary text-dark font-bold px-9 py-4 rounded-full shadow-lg shadow-cyan-500/20 hover:bg-white transition">
+
+                    🔧 Sifariş Ver
+
+                </a>
+
+                <a href="#services"
+                    class="w-full sm:w-auto border border-cyan-400/30 text-white font-semibold px-9 py-4 rounded-full hover:border-primary hover:text-primary transition">
+
+                    Xidmətlərə bax →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <section class="bg-card border-y border-cyan-400/10 py-10 px-5">
+
+        <div class="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+
+            <div>
+                <div class="text-3xl sm:text-4xl font-black text-primary">
+                    200+
+                </div>
+                <div class="text-sm text-slate-400 mt-2">
+                    Uğurlu təmir
+                </div>
+            </div>
+
+            <div>
+                <div class="text-3xl sm:text-4xl font-black text-primary">
+                    50+
+                </div>
+                <div class="text-sm text-slate-400 mt-2">
+                    Tamamlanan proyekt
+                </div>
+            </div>
+
+            <div>
+                <div class="text-3xl sm:text-4xl font-black text-primary">
+                    3+
+                </div>
+                <div class="text-sm text-slate-400 mt-2">
+                    İl təcrübə
+                </div>
+            </div>
+
+            <div>
+                <div class="text-3xl sm:text-4xl font-black text-primary">
+                    98%
+                </div>
+                <div class="text-sm text-slate-400 mt-2">
+                    Müştəri məmnuniyyəti
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section id="services" class="py-20 sm:py-24 px-5">
+
+        <div class="max-w-6xl mx-auto">
+
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white text-center mb-4">
+                Xidmətlərimiz
+            </h2>
+
+            <p class="max-w-2xl mx-auto text-center text-slate-400 mb-14 leading-relaxed">
+                Sadə təmirdən mürəkkəb proyektlərə qədər
+                tam spektrdə dəstək göstəririk.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                <!-- CARD 1 -->
+                <div class="service-card bg-inner border border-cyan-400/20 rounded-2xl p-7 flex flex-col">
+
+                    <div class="text-4xl mb-6">
+                        🔌
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        Elektronika Təmiri
+                    </h3>
+
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        Məişət və sənaye elektronikası,
+                        invertorlar, səs gücləndiriciləri
+                        və güc bloklarının təmiri.
+                    </p>
+
+                    <ul class="space-y-4 text-slate-400 text-sm mt-auto">
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            TV, monitor, noutbuk
+                        </li>
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            Güc bloku, inverter
+                        </li>
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            Səs sistemləri
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- CARD 2 -->
+                <div class="service-card bg-inner border border-cyan-400/20 rounded-2xl p-7 flex flex-col">
+
+                    <div class="text-4xl mb-6">
+                        🤖
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        Mikrokontroller Layihələri
+                    </h3>
+
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        Arduino, ESP32, STM32 əsasında
+                        istəyinizə uyğun cihazların yığılması
+                        və proqramlanması.
+                    </p>
+
+                    <ul class="space-y-4 text-slate-400 text-sm mt-auto">
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            Arduino & ESP32 layihələri
+                        </li>
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            Smart Ev sistemləri
+                        </li>
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            Sensor & Aktuator inteqrasiyası
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- CARD 3 -->
+                <div class="service-card bg-inner border border-cyan-400/20 rounded-2xl p-7 flex flex-col md:col-span-2 xl:col-span-1">
+
+                    <div class="text-4xl mb-6">
+                        🖥️
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        PCB Dizayn & İstehsal
+                    </h3>
+
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        Sxemin çəkilməsi, çap lövhəsinin (PCB)
+                        dizaynı və komponentlərin lehimlənməsi.
+                    </p>
+
+                    <ul class="space-y-4 text-slate-400 text-sm mt-auto">
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            Sxematik dizayn
+                        </li>
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            KiCad / EasyEDA Layout
+                        </li>
+
+                        <li class="flex gap-3">
+                            <span class="text-primary font-bold">✓</span>
+                            SMD & THT lehimləmə
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="bg-card border-y border-cyan-400/10 py-20 px-5">
+
+        <div class="max-w-6xl mx-auto">
+
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-white mb-4">
+                Necə işləyir?
+            </h2>
+
+            <p class="text-center text-slate-400 mb-12">
+                Sifariş prosesimiz sadə və rahatdır.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+
+                <div class="text-center p-6 rounded-2xl bg-inner border border-cyan-400/20">
+                    <div class="text-primary text-3xl font-black mb-4">01</div>
+                    <h3 class="font-bold text-white mb-3">Sifariş göndərin</h3>
+                    <p class="text-slate-400 text-sm">Formu dolduraraq ehtiyacınızı bizə bildirin.</p>
+                </div>
+
+                <div class="text-center p-6 rounded-2xl bg-inner border border-cyan-400/20">
+                    <div class="text-primary text-3xl font-black mb-4">02</div>
+                    <h3 class="font-bold text-white mb-3">Əlaqə saxlayırıq</h3>
+                    <p class="text-slate-400 text-sm">Sizinlə əlaqə saxlayıb detalları dəqiqləşdiririk.</p>
+                </div>
+
+                <div class="text-center p-6 rounded-2xl bg-inner border border-cyan-400/20">
+                    <div class="text-primary text-3xl font-black mb-4">03</div>
+                    <h3 class="font-bold text-white mb-3">İşə başlayırıq</h3>
+                    <p class="text-slate-400 text-sm">Razılaşdırılmış iş üzrə təmir və ya layihəni həyata keçiririk.</p>
+                </div>
+
+                <div class="text-center p-6 rounded-2xl bg-inner border border-cyan-400/20">
+                    <div class="text-primary text-3xl font-black mb-4">04</div>
+                    <h3 class="font-bold text-white mb-3">Təhvil veririk</h3>
+                    <p class="text-slate-400 text-sm">Hazır işi sizə təqdim edirik.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 sm:py-24 px-5 bg-dark">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+                <!-- CONTACT INFO -->
+                <div class="w-full">
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-5">
+                        Sifarişinizi Göndərin
+                    </h2>
+
+                    <p class="text-slate-400 leading-relaxed mb-10">
+                        Formu doldurun, 24 saat ərzində sizinlə
+                        əlaqə saxlayaq və ya birbaşa WhatsApp ilə yazın.
+                    </p>
+
+                    <!-- PHONE -->
+                    <div class="flex items-center gap-4 mb-8">
+
+                        <div class="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-xl">
+                            📱
+                        </div>
+
+                        <div class="min-w-0">
+                            <strong class="block text-white">
+                                WhatsApp & Telefon
+                            </strong>
+
+                            <span class="text-slate-400 text-sm break-all">
+                                +994 50 123 45 67
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- TELEGRAM -->
+                    <div class="flex items-center gap-4 mb-8">
+
+                        <div class="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-xl">
+                            ✈️
+                        </div>
+
+                        <div class="min-w-0">
+                            <strong class="block text-white">
+                                Telegram
+                            </strong>
+
+                            <span class="text-slate-400 text-sm">
+                                @electrotech_az
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- WORK HOURS -->
+                    <div class="flex items-center gap-4 mb-8">
+
+                        <div class="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-xl">
+                            🕐
+                        </div>
+
+                        <div class="min-w-0">
+                            <strong class="block text-white">
+                                İş saatları
+                            </strong>
+
+                            <span class="text-slate-400 text-sm">
+                                Bazar ertəsi – Şənbə: 09:00 – 20:00
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ORDER FORM -->
+                <div class="bg-inner border border-cyan-400/20 rounded-2xl p-5 sm:p-8 shadow-xl">
+
+                    <form id="orderForm" onsubmit="submitForm(event)">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                            <div class="mb-4">
+                                <label class="block text-slate-400 text-sm mb-2">
+                                    Adınız və Soyadınız *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nameInput"
+                                    placeholder="Məs: Əli Məmmədov"
+                                    required
+                                    class="w-full bg-white/5 border border-cyan-400/20 rounded-xl p-3 text-white placeholder-slate-500 outline-none focus:border-primary transition">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="block text-slate-400 text-sm mb-2">
+                                    Telefon Nömrəniz *
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phoneInput"
+                                    placeholder="+994 50 123 45 67"
+                                    required
+                                    class="w-full bg-white/5 border border-cyan-400/20 rounded-xl p-3 text-white placeholder-slate-500 outline-none focus:border-primary transition">
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label class="block text-slate-400 text-sm mb-2">
+                                Email (İstəyə bağlı)
+                            </label>
+
+                            <input
+                                type="email"
+                                id="emailInput"
+                                placeholder="adiniz@example.com"
+                                class="w-full bg-white/5 border border-cyan-400/20 rounded-xl p-3 text-white placeholder-slate-500 outline-none focus:border-primary transition">
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label class="block text-slate-400 text-sm mb-2">
+                                Xidmət Növü *
+                            </label>
+
+                            <select
+                                id="serviceInput"
+                                required
+                                class="w-full bg-white/5 border border-cyan-400/20 rounded-xl p-3 text-white outline-none focus:border-primary transition">
+
+                                <option value="" class="bg-slate-900">Seçin...</option>
+
+                                <option class="bg-slate-900">Elektronika Təmiri</option>
+
+                                <option class="bg-slate-900">Mikrokontroller Proyekti (Arduino/ESP32)</option>
+
+                                <option class="bg-slate-900">PCB Dizayn & İstehsal</option>
+
+                                <option class="bg-slate-900">Xüsusi Sifariş Qurğusu</option>
+
+                                <option class="bg-slate-900">Diaqnostika və Konsultasiya</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-5">
+
+                            <label class="block text-slate-400 text-sm mb-2">
+                                Problemin və ya Proyektin İzahı *
+                            </label>
+
+                            <textarea
+                                id="descInput"
+                                rows="4"
+                                required
+                                placeholder="Cihazın modeli, nasazlıq və ya layihə haqqında qısa məlumat..."
+                                class="w-full bg-white/5 border border-cyan-400/20 rounded-xl p-3 text-white placeholder-slate-500 outline-none focus:border-primary transition resize-y"></textarea>
+
+                        </div>
+
+
+                        <div id="formMsg" style="display:none"
+                            class="mb-4 text-sm">
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            id="submitBtn"
+                            class="w-full bg-primary text-dark font-bold p-4 rounded-xl hover:bg-white transition shadow-lg shadow-cyan-500/20">
+
+                            ⚡ Sifarişi Göndər
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-card border-t border-cyan-400/10 py-8 px-5">
+
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+
+            <a href="#" class="text-xl font-extrabold text-white">
+                ⚡ Electro<span class="text-primary">Tech</span>
+            </a>
+
+            <p class="text-slate-500 text-sm">
+                © 2026 ElectroTech. Bütün hüquqlar qorunur.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- FLOATING WHATSAPP -->
+    <a
+        href="https://wa.me/994501234567?text=Salam,%20elektronika%20t%C9%99miri%20v%C9%99%20proyekt%20il%C9%99%20ba%C4%9Fl%C4%B1%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="float-wa fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-40 w-14 h-14 sm:w-16 sm:h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30"
+        title="WhatsApp ilə yazın">
+
+        <i  class="fa-brands fa-whatsapp text-[40px]"></i>
+
+    </a>
+
+
+    <!-- SİFARİŞ İZLƏMƏ MODAL -->
+    <div
+        class="modal-overlay fixed inset-0 z-[100] bg-black/80 items-center justify-center p-4 overflow-y-auto"
+        id="trackerModal"
+        onclick="if(event.target===this)closeTracker()">
+
+        <div class="w-full max-w-lg bg-inner border border-cyan-400/20 rounded-2xl p-6 sm:p-8 relative shadow-2xl my-auto">
+
+            <button
+                class="absolute top-3 right-4 text-slate-400 hover:text-white text-3xl"
+                onclick="closeTracker()"
+                aria-label="Bağla">
+
+                &times;
+
+            </button>
+
+            <h3 class="text-xl font-bold text-white mb-3 pr-7">
+                🔍 Sifariş Statusunu Yoxlayın
+            </h3>
+
+            <p class="text-slate-400 text-sm mb-5">
+                Sifariş verərkən sizə verilən ID nömrəsini daxil edin:
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+
+                <input
+                    type="text"
+                    id="trackId"
+                    placeholder="Məs: 3f8c14a2-..."
+                    class="flex-1 min-w-0 bg-white/5 border border-cyan-400/20 rounded-xl p-3 text-white outline-none focus:border-primary">
+
+                <button
+                    onclick="checkTrack()"
+                    class="bg-primary text-dark font-bold px-6 py-3 rounded-xl hover:bg-white transition">
+
+                    Yoxla
+
+                </button>
+
+            </div>
+
+            <div id="trackResult" style="display:none"
+                class="mt-5">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js" defer></script>
+
+</body>
+</html>
